@@ -57,6 +57,7 @@ public:
         options.applicationName     = getApplicationName();
         options.filenameSuffix      = ".settings";
         options.osxLibrarySubFolder = "Application Support";
+        options.doNotSave = false;
        #if JUCE_LINUX || JUCE_BSD
         options.folderName          = "~/.config";
        #else
@@ -100,7 +101,8 @@ public:
        #if JUCE_STANDALONE_FILTER_WINDOW_USE_KIOSK_MODE
         Desktop::getInstance().setKioskModeComponent (mainWindow.get(), false);
        #endif
-
+        mainWindow->setResizable(true, true);
+        mainWindow->setBounds(10,10,600,800);
         mainWindow->setVisible (true);
     }
 
